@@ -23,7 +23,6 @@ const SignUp = () => {
     }
 
     useEffect(() => {
-        // console.log(user)
         if(user !== null){
             navigate('/')
         }
