@@ -1,21 +1,33 @@
-import Chats from "../components/Chats"
-import SelectedChatContent from "../components/SelectedChatContent"
-import Sidebar from "../components/Sidebar"
-import { UserAuth } from "../context/AuthContext"
+import Chats from "../components/Chats";
+import SelectedChatContent from "../components/SelectedChatContent";
+import Sidebar from "../components/Sidebar";
+import { UserAuth } from "../context/AuthContext";
+import { collection, getDocs, onSnapshot, query } from "firebase/firestore";
+import { db } from "../firebase/firebase";
+import { useEffect, useState } from "react";
 
 const Account = () => {
-    const { logOut, user } = UserAuth()
-    const handle = () => {
-        logOut()
-    }
-    return(
-        <div className="w-screen h-screen flex">
-            <Sidebar />
-            <Chats />
-            <SelectedChatContent />
-            {/* <button className="px-4 py-2 bg-blue-500 rounded-md ml-5" onClick={handle}>Log out</button> */}
-        </div>
-    )
-}
+  const [chats, setChats] = useState([]);
+  useEffect(() => {
+    const q = query(collection(db, "chats"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        setChats([{ id: doc.id, ...doc.data() }]);
+        console.log(doc.data());
+      });
+    });
 
-export default Account
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  return (
+    <div className="w-screen h-screen flex">
+      <Sidebar />
+      <Chats chats={chats} />
+      <SelectedChatContent chats={chats} />
+    </div>
+  );
+};
+
+export default Account;

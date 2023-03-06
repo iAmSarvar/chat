@@ -23,7 +23,7 @@ const Sidebar = () => {
             className="text-4xl text-white cursor-pointer"
           />
         </div>
-        <div className="w-[80px] flex flex-col items-center justify-center py-3 bg-gray-800 hover:bg-gray-900">
+        <div className="w-[80px] flex flex-col items-center justify-center py-3 bg-gray-900 hover:bg-gray-900">
           <AiOutlineMessage className="text-4xl text-white cursor-pointer" />
           <p className="text-white text-sm">Chats</p>
         </div>
