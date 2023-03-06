@@ -36,7 +36,7 @@ const Drawer = ({ setIsOpen, isOpen }) => {
       <HorizontalLine />
       <MenageList />
       <div className="absolute bottom-0 flex flex-col justify-start p-5">
-        <p className="text-md text-gray-400">Sarvar Sultanov</p>
+        <p className="text-md text-gray-400">Created by Sarvar Sultanov</p>
         <p className="text-sm text-gray-500">Version 1.0.0</p>
       </div>
     </motion.div>

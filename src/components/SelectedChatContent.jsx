@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const SelectedChatContent = () => {
-  return (
-    <div className='w-[calc(70vw-80px)] bg-red-400'>
+  return <div className="w-[calc(70vw-80px)] bg-gray-800"></div>;
+};
 
-    </div>
-  )
-}
-
-export default SelectedChatContent
+export default SelectedChatContent;

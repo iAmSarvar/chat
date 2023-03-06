@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { db } from "../firebase/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const Chats = () => {
-  return (
-    <div className='h-100 w-[30vw] bg-blue-400'>
+  useEffect(() => {
+    const docRef = doc(db, "users");
+    const docSnap = getDoc(docRef);
+    console.log(docSnap.data());
+  }, []);
 
-    </div>
-  )
-}
+  return <div className="h-100 w-[30vw] bg-gray-900">{}</div>;
+};
 
-export default Chats
+export default Chats;
